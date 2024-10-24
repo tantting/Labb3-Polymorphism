@@ -1,6 +1,12 @@
+using System.Formats.Asn1;
+
 namespace Labb3_Polymorphism;
 
-public abstract class Geometry
+public class Geometry
 {
-    public abstract double Area();
+    public virtual double Area()
+    {
+        double area = 0;
+        return area; 
+    }
 }
