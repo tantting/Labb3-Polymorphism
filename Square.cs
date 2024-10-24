@@ -5,7 +5,7 @@ namespace Labb3_Polymorphism;
 public class Square : Geometry
 {
     private double _side;
-
+    
     public double Side
     {
         get { return _side; }
@@ -25,7 +25,10 @@ public class Square : Geometry
     {
         Side = side; 
     }
-
+    /// <summary>
+    /// A metohod for calculating the area of the square that overrides the virtual area method in the parent class.
+    /// </summary>
+    /// <returns>area of square (double)</returns>
     public override double Area()
     {
         double area = Math.Pow(_side, 2);
