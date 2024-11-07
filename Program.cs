@@ -14,12 +14,20 @@ class Program
         //class instanses.   
         var geometries = new List<Geometry>() {circle, rectangle, square};
         
+        //Create a sorted list, using OrderBy and sorting by area.
+        List<Geometry> sortedGeometries = geometries.OrderBy(o => o.Area()).ToList();
+
+        foreach (var geometry in sortedGeometries)
+        {
+            Console.WriteLine($"The area of {geometry.GetType().Name.ToLower()} is {geometry.Area():N}");
+        }
         
-        //A nested for-loop for sorting the List of all the Geometry instanses (by ascending areas). It moves the object
-        //with the smallest area at every comparison to the i-position. After the first outer-loop, the classs instans
-        //with the smallest area will be at position i.....
-        //Before doing this, the Geometry class was an abstract class. I needed to change that, in order to create a
-        //general Geometry object (geomwetry) to store objects in while swaping object orders.  
+        //For fun, I also made a nested for-loop for sorting the List of all the Geometry instanses (by ascending areas)
+        //instead of sing OrderBy (just for fun). It moves the object with the smallest area at every comparison to the
+        //i-position. After the first outer-loop, the classs instance with the smallest area will be at position i.....
+        //To be able and run this,the Geometry class cannot be an abstract class since I need to create a
+        //general Geometry object (geomwetry) to store objects in while swapping object orders.  
+        /*
         for (int i = 0; i < geometries.Count-1; i++)
         {
             for (int y = i + 1; y < geometries.Count; y++)
@@ -34,21 +42,11 @@ class Program
                 }
             }
         }
-
         foreach (var geometry in geometries)
         {
            Console.WriteLine($"The area of the {geometry.GetType().Name.ToLower()} is {geometry.Area():N}"); 
         }
-        
-        //Tested at first this way of sorting the list - using the OrderBy-method. For fun, I also ended up doing the 
-        //for loop above. 
-        /*
-        List<Geometry> sortedGeometries = geometries.OrderBy(o => o.Area()).ToList();
-
-         foreach (var geometry in sortedGeometries)
-         {
-             Console.WriteLine($"Area of {geometry.GetType().Name} is {geometry.Area():N}");
-         }
-         */
+        */
+         
     }
 }
