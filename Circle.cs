@@ -23,6 +23,11 @@ public class Circle : Geometry
         }
     }
 
+    public Circle()
+    {
+        Radius = 4; 
+    }
+
     public Circle(double radius)
     {
         _radius = radius;

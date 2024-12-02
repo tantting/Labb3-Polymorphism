@@ -21,6 +21,11 @@ public class Square : Geometry
         }
     }
 
+    public Square()
+    {
+        Side = 4;
+    }
+
     public Square(double side)
     {
         Side = side; 

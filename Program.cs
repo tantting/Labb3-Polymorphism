@@ -1,23 +1,42 @@
-﻿namespace Labb3_Polymorphism;
+﻿using System.Collections.Concurrent;
+using System.Diagnostics;
+
+namespace Labb3_Polymorphism;
 
 class Program
 {
     static void Main(string[] args)
     {
-        //create instanses of the classes Circle, Rectangle and Square. 
-        Circle circle = new Circle(5);
-        Rectangle rectangle = new Rectangle(10, 5);
-        Square square = new Square(5);
+        //create instanses of the classes with the empty constructor where fields are pre-set. 
+        Circle circle = new Circle();
+        Rectangle rectangle = new Rectangle();
+        Square square = new Square();
+        
+        //create instanses of the classes Circle, Rectangle and Square where I set values myself.
+        Circle circleSettingValues = new Circle(5);
+        Rectangle rectangleSettingValues = new Rectangle(10, 5);
+        Square squareSettingValues = new Square(5);
         
         //Since the classes Circle, Square and Rectangle are all subclassses to the base-class Geometries (variants of
         //Geometries) I can treat the different objects as Geometry-objects and add them all to a List of the Geometry
         //class instanses.   
-        var geometries = new List<Geometry>() {circle, rectangle, square};
+        var geometries = new List<Geometry>() {circle, rectangle, 
+            square};
+        var geometriesSettingValues = new List<Geometry>() {circleSettingValues, rectangleSettingValues, 
+            squareSettingValues};
         
         //Create a sorted list, using OrderBy and sorting by area.
         List<Geometry> sortedGeometries = geometries.OrderBy(o => o.Area()).ToList();
-
+        List<Geometry> sortedGeometriesOwnValues = geometriesSettingValues.OrderBy(o => o.Area()).ToList();
+        
         foreach (var geometry in sortedGeometries)
+        {
+            Console.WriteLine($"The area of {geometry.GetType().Name.ToLower()} is {geometry.Area():N}");
+        }
+
+        Console.WriteLine("----------");
+
+        foreach (var geometry in sortedGeometriesOwnValues)
         {
             Console.WriteLine($"The area of {geometry.GetType().Name.ToLower()} is {geometry.Area():N}");
         }

@@ -37,6 +37,12 @@ public class Rectangle : Geometry
         }
     }
 
+    public Rectangle()
+    {
+        Base = 4;
+        Height = 2; 
+    }
+
     public Rectangle(double rBase, double rHeight)
     {
         Base = rBase;
